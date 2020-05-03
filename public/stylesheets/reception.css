@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+body
+{
+    /* background-color:#BDBDBD; */
+    margin: 0;
+    padding: 0;
+    font-family:'lato',sans-serif;
+    background-color: gray;
+}
+
+/* logout button */
+.fa-power-off
+{
+    float: right;
+}
+/* end of logout button */
+
+/* profile nav */
+.nav-tabs h3
+{
+    background-color: #EEEEEE;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 7px;
+    margin: 0px 5px 15px 5px;
+    background-color: #69aec7;
+    color: white;
+    transition: all 0.3s;
+}
+
+.nav-tabs h3:hover
+{
+    background-color: #18A066;
+    transform: translateY(-2px);
+}
+
+/* end of profile nav */
+
+/* nav bar */
+.navbar
+{
+    padding: 0;
+}
+.sidebar
+{
+    height: 100vh;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: black;    
+}
+
+.current
+{
+    /* box-shadow: 2px 5px 5px white;  */
+    transition: all .4s;
+}
+
+.current:hover
+{
+    border: none;
+    background-color: #18A066;
+    border-radius: 8px;
+    /* box-shadow: 2px 5px 5px gray; */
+    transform: translateY(-2px);
+}
+
+.navbar-light .navbar-nav .nav-link.active
+{
+    background-color: #69aec7;
+    border: none;
+    outline: none;
+    border-radius: 8px; 
+    transform: translateY(-2px);
+}
+/* end of nav bar */
+
+
+/* top nav */
+
+.allnav
+{
+    background-color: #69aec7;
+}
+
+.top-bar
+{
+    background-color: #f8f9fa;
+}
+
+/* end of top nav */
+
+@media (max-width: 768px)
+{
+    
+    .sidebar
+    {
+        position: static;
+        height: auto;
+    }
+
+    .top-nav
+    {
+        position: static;
+    }
+}
+
+/* card */
+.card-common i
+{
+    color: #69aec7;
+}
+/* end of card */
+
+/* quick post */
+.bg-button{
+    background-color: #69aec7;
+}
+/* end of quick post */
+
+/* notice */
+#notices
+{
+    width: 100%;
+    height: 377px;
+    overflow-y: scroll;
+    margin: 5px;
+}
+
+/* schTable */
+#schTable_filter
+{
+    display:none;
+}
+
+.dt-buttons
+{
+    float: left;
+}
+/* end of schTable */
+
+.dt-button.buttons-collection.dt-button-collection
+{
+    margin-top: 0px;
+    width: 71px;
+}
+
+/* table length */
+#schTable_length
+{
+    float: right;
+}
+/* end of table length */
+
+/* appt_length and pat_length */
+#patTable_length,#apptTable_length
+{
+    margin-top: 10px;
+}
+/* end of appt_length and pat_length */

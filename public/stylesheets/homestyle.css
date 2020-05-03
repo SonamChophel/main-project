@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+body{
+	overflow-x: hidden;
+	font-family: 'Lato', sans-serif;
+}
+
+.navbar{
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: .9rem;  /*14px*/
+	letter-spacing: .1rem;
+	background: rgba(255,255,255,.9)!important;
+}
+.navbar-brand img{
+	height: 4rem;
+}
+.navbar-nav li{
+	padding-right: .7rem;
+}
+
+.navbar-light .navbar-nav .btn{
+	color: black;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: .9rem;  /*14px*/
+	letter-spacing: .1rem;
+	padding-top: .8rem;
+	border: none;
+}
+.navbar-light .navbar-nav .nav-link{
+	padding-top: .8rem;
+	color: black;
+	text-transform: uppercase;
+	font-size: .9rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+.navbar-light .navbar-nav .btn:hover{
+	background-color: #18A066;
+	color: white;
+	border: none;
+	box-shadow: none;
+}
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover{
+	color: #18A066;
+	box-shadow: none;
+}
+
+/*----landing page*/
+.home-inner{
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZWRKhwPR2q4Lh4qF2tCRDdNG1Xo0b_UfqLt-WygrTopw7-k4D&usqp=CAU");
+}
+
+.caption{
+	width: 100%;
+	max-width: 100%;
+	position: absolute;
+	top: 35%;
+	z-index: 1;
+	/* color: rgba(0,0,0,0.7); */
+	color: white;
+	text-transform: uppercase;
+}
+.caption h1{
+	font-size: 3.2rem;
+	font-weight: 700;
+	letter-spacing: .3rem;
+	/*text-shadow: .1rem .1rem .5rem grey;*/
+	padding-bottom: .1rem;
+}
+
+.btn-lg{
+	color: white;
+	border-width: medium;
+	border-radius: 0;
+	border-color: white;
+	padding: .8rem 1.3rem;
+	font-size: 1.1rem;
+	font-weight: 800;
+}
+.btn-lg:hover{
+	background-color: black;
+	color: white;
+	border-color: black;
+}
+
+
+/*---------------------login modal-------------*/
+.sign-up{
+	color: white;
+	border: none;
+	background-color: rgba(0,0,0,0);
+	outline: none;
+}
+.modal-dialog{
+	border:none;
+
+}
+.modal-body{
+	/* height: 300px; */
+	overflow-y: scroll;
+}
+.modal-content{
+	margin: 0 auto;
+	background-color: rgba(0,0,0,0.7);
+	border: none;
+	border-radius: 5%;
+	color: white;
+	width: 80%;
+}
+.modal-content .close{
+	outline: none;
+	margin-right: 0;
+}
+
+.close{
+	color: white;
+	text-shadow: none;
+	outline: none;
+	opacity: 1;
+}
+
+.modal-header{
+	border-bottom: none;
+}
+
+
+.modal-footer{
+	border-top: none;
+}
+
+.modal-footer .sign-up{
+	outline: none;
+}
+
+
+.form-heading{
+	/*margin-bottom: 20px;*/
+	text-align: center;
+	text-transform: uppercase;
+	size: 1.5rem;
+	font-weight: bolder;
+	position: sticky;
+	/* background-color:#99bbf2; */
+	margin-top: 0;
+	height: 50px;
+}
+
+/* ========SIGNUP========== */
+.accountType{
+		margin-top: 30px;
+		width: 100%;
+		color: white;
+		outline: none;
+		background: transparent;
+		font-size: 16px;
+		border: none;
+		border-bottom: 1px solid white;
+		border-radius: 0px;
+}
+
+.accountType option {
+	color: black;
+}
+
+.signup-form-inline{
+	margin-top: 20px;
+}
+.signup-form .form-group{
+	white-space: nowrap;
+}
+#signup{
+	margin-bottom: 20px;
+	height: 600px;
+}
+
+#forgotpassword{
+	text-decoration: none;
+}
+
+/*------input and label animation----*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+input[type=date]{
+	margin-top: 25px;
+	color: white;
+	outline: none;
+	background: transparent;
+	font-size: 16px;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid white;
+	border-radius: 0px;
+}
+
+.form-group {
+  position: relative;
+}
+.form-control{
+	color: white;
+	outline: none;
+	background: transparent;
+	font-size: 16px;
+	border: none;
+	border-bottom: 1px solid white;
+	border-radius: 0px;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  opacity: 0.5;
+}
+
+.form-control:focus{
+	background: transparent;
+	outline: none;
+	border: none;
+	border-radius: 0;
+	color: white;
+	font-size: 13px;
+	border-bottom: 1px solid white;
+	box-shadow: none;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+
+  font-size: 80%;
+  transform: translate3d(0, -50%, 0);
+  opacity: 1;
+  background: transparent;
+  outline: none;
+  border:none;
+}
+
+.form-button{
+	font-size: 12px;
+	background:none;
+	border:none;
+	color: white;
+	font-weight: bold;
+	margin: 10px;
+	margin-left:0;
+	padding: 10px 15px;
+}
+.form-button:hover{
+	background-color: white;
+	color: #18A066;
+	border-radius: 3px;
+}
+
+.checkbox{
+	margin-bottom: 2rem;
+  	margin-left: 20px;
+}
+
+.datetime-input-edit-wrapper{
+	font-size: 10px;
+	color: white;
+}
+
+/*::-webkit-scrollbar{
+	width: 10px;
+}*/
+
+/* styling department section*/
+.narrow{
+	width: 100%;
+	padding-top: 1rem;
+	/* margin-bottom: rem; */
+}
+
+.dept-jumbotron{
+	padding: 1rem;
+	border-radius: 0;
+	background-color: white;
+}
+h3.heading{
+	font-size: 1.9rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: .5em;
+	margin-top: 1.9em;
+}
+.heading-underline{
+	width: 3rem;
+	height: .2rem;
+	background-color: #99bbf2;
+	margin: 0 auto 3rem;
+}
+
+.feature{
+	margin-bottom: 3rem;
+}
+.feature svg.svg-inline--fa{
+	color: #99bbf2;
+	padding-bottom: .3rem;
+}
+.feature h3{
+	font-size: 20px;
+	text-transform: uppercase;
+	padding-bottom: .4rem
+}
+.feature p{
+	margin-top: .1rem;
+	padding: 1rem 2rem;
+}
+
+/* start styling highlight section */
+
+.hl-jumbotron .blockquote{
+	font-size: 1.2rem;
+}
+.hl-jumbotron .blockquote h5,.hl-jumbotron .blockquote a{
+	font-weight: bold;
+}
+.hl-jumbotron .blockquote a{
+	text-decoration: none;
+	font-size: .85rem;
+}
+.hl-links .col-4 a{
+	color: white;
+	text-align: center;
+	padding: 2rem;
+	/* margin: 1rem; */
+	background-color: #99bbf2;
+}
+
+
+
+
+
+/* styling service section */
+.fixed{
+	background-image: url(img/bg3.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+.dark{
+	background-color:rgba(0, 0, 0,.75);
+	color: white;
+	padding-bottom: 3rem;
+}
+.dark .fa-4x{
+	color: #99bbf2;
+}
+.service-list{
+	font-size: .9rem;
+	padding-bottom: 2rem;
+}
+/* styling the contact section */
+
+#contact,#service,#notice,#department{
+	padding-top: 0px;
+}
+#contact {
+	color: white;
+	background-color: #99bbf2;
+
+}
+.embed-responsive-item {
+	margin: 0;
+	padding: 0;
+
+}
+.embed-responsive{
+	padding: 0;
+	height: 370px;
+}
+/* styling the footer section */
+
+
+/* slider home page */
+
+
+.slideshow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+    /* background-image: url(http://i.imgur.com/K3mPv14.jpg) */
+		/* background-image: url("https://cdn.wallpapersafari.com/46/54/fJc5OX.jpg"); */
+	background-image: url("https://scontent.fpbh1-1.fna.fbcdn.net/v/t1.0-9/34345898_244900099390766_2132244824860917760_o.jpg?_nc_cat=111&_nc_sid=6e5ad9&_nc_oc=AQmvWPKBtB50psEa3wjnf9JlTHyw5_w8vTMHyQCS0tuVzahzoBbXzvSU_WjccW68cFM&_nc_ht=scontent.fpbh1-1.fna&oh=64e6b343e3fc0f51ce6e7d4ff58bfafd&oe=5ECE1012");
+
+  }
+  .slideshow li:nth-child(2) {
+    background-image: url("https://images2.alphacoders.com/907/thumb-350-907191.png");
+    animation-delay: 10s;
+  }
+  .slideshow li:nth-child(3) {
+	background-image: url("https://www.who.int/images/default-source/wco_myanmar/voluntary-unpaid-blood-donation-national-blood-centre-in-yangon-region.jpg?sfvrsn=af455819_2");
+    animation-delay: 20s;
+  }
+  .slideshow li:nth-child(4) {
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/cf/Jdw.jpg");
+    animation-delay: 30s;
+  }
+  .slideshow li:nth-child(5) {
+    background-image: url("https://thebhutanese.bt/wp-content/uploads/2017/11/s2-1.jpg");
+    animation-delay: 40s;
+  }
+
+  @keyframes imageAnimation {
+    0% {
+      opacity: 0;
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+  }
+
+  /* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+/* end of slider */

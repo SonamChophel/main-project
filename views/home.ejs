@@ -1,0 +1,389 @@
+<%-include("./partials/header.ejs")%>
+<body data-spy="scroll" data-target="#navbarResponsive">
+    <!-- start home section -->
+    <div id="home">
+    <!-- start navbar -->
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <a href="#home" class="navbar-brand"><img src="./image/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#department">Departments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#service">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#highlight">highlight</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#login">login</a>
+                    </li>
+                </ul>
+            </div>        
+        </nav>
+    <!-- end navbar -->
+    <!-- start landing page -->
+    <div class="landing" >
+        <div class="home-wrap">
+            <ul class="slideshow">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="caption text-center">
+        <h1> Welcome to Sowa-Info </h1>
+        <a class="btn btn-outline-dark btn-lg" href="#department">Get Started</a>
+        <div class="container" style="width: 400px;">
+            <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert"> 
+                <%=error%>
+            </div>
+            <% } else if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%=success%>
+            </div>
+            <%}%>
+        </div>
+    </div>
+
+        <!-- end landing page -->
+    </div>
+    <!-- close home section -->
+
+    <!-- START SIGNIN FORM -->
+    <div id="login" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button><br>
+            </div>
+            <div class="modal-body" style="overflow-y: hidden;">
+                <div class="form-heading"><h3><strong>LOGIN</strong></h3></div>
+                <div class="main">
+                    <form action="/login" method="POST" >
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" class="form-control" autocomplete="off" required>
+                        <label class="form-control-placeholder mb-3" for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control" autocomplete="off" required>
+                        <label class="form-control-placeholder mb-3" for="password">Password</label>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <button type="submit" class="btn btn-light login-submit">Submit</button>
+                        <p class="text-center mt-2">
+                            <a id="forgotpassword" href="#">Forgot Password?</a>
+                        </p>
+                    </div>
+                </form>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="sign-up" data-toggle="modal" data-dismiss="modal" data-target="#signup">SIGNUP</button>
+            </div>
+        </div>
+        <!--end Modal content-->
+        </div>
+    </div>
+    <!-- end signin form -->
+
+
+
+    <!-- START SIGNUP FORM -->
+    <div id="signup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="form-heading">SIGNUP</div>
+          <div class="modal-body" style="height: 420px;">
+
+            <div class="form-body">
+                <form action="/register" method="POST" name="signup" onsubmit="return matchpass()">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="firstname" name="username" autocomplete="off" required>
+                    <label for="firstname" class="form-control-placeholder">Name:</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="cid" name="cid" autocomplete="off" required>
+                    <label for="cid" class="form-control-placeholder">CID no:</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="dob" class="form-control-placeholder">Date of Birth:</label>
+                    <input type="date" class="" id="dob" name="dob" autocomplete="off" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+                    <label for="email" class="form-control-placeholder">Email:</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control" id="phonenumber" name="phonenumber" autocomplete="off" required>
+                    <label for="phonenumber" class="form-control-placeholder">Phone Number:</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="address" name="address" autocomplete="off" required>
+                    <label for="permanentaddress" class="form-control-placeholder">Address:</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <label for="password" class="form-control-placeholder">Password:</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="confirmpassword" required>
+                    <label for="confirmpassword" class="form-control-placeholder">Confirm password:</label>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="account type" class="form-control-placeholder">Account Type:</label>
+                      <!-- <input type="text" id="accountType" class="form-control" value="Student" disabled> -->
+                      <select class="accountType" name="acctype">
+                          <option value="options">Select Option</option>
+                          <option value="doctor">Doctor</option>
+                          <option value="reception">Receptionist</option>
+                          <option value="labtechnician">Lab Technician</option>
+                          <option value="patient">Patient</option>
+                          <option value="admin">Admin</option>
+                      </select>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-dark">Sign up</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    <!-- end Modal content-->
+    </div>
+    </div>
+    <!-- end signin form -->
+
+    <!-- start department section -->
+    <div id="department" class="offset" >
+        <div class="jumbotron dept-jumbotron">
+        <div class="narrow text-center">
+            <div class="col-12">
+                <h3 class="heading">Departments</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="row text-center">
+              <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-syringe fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Surgical</h3>
+                        <p>The Surgical Department in Jigme Dorji Wangchuck National Referral Hospital is formed in the year 2004. It deals with various surgical ...<a href="https://www.jdwnrh.gov.bt/departments/clinical/surgical/" target="_black">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-pills fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Medical</h3>
+                        <p>The Department of Medicine is manned by two Internal Medicine specialists, two cardiologists...<a href="" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-brain fa-4x" data-fa-transform="shrink-3 "></i>
+                        <h3>psychiatry</h3>
+                        <p>Until 1997, there was no psychiatrist or dedicated mental health professionals providing mental health care ...<a href="https://www.jdwnrh.gov.bt/departments/clinical/psychiatry/" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+            </div><!-- end of the row -->
+
+            <div class="row text-center">
+              <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-tooth fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>dentistry</h3>
+                        <p>Human Resources Department of Dentistry currently has five specialists and three General Duty Dental Surgeons assisted by...<a href="https://www.jdwnrh.gov.bt/departments/clinical/dentistry/" target="_blank">READ MORE</a> </p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-allergies fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Dermatology</h3>
+                        <p>Two Dermatologists and one medical officer currently run the Department of Dermatology with assistance ...<a href="https://www.jdwnrh.gov.bt/departments/clinical/dermatology/" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-skull fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Orthopaedics</h3>
+                        <p>The Orthopaedic Unit of JDW National Referral Hospital is the apex orthopaedic referral centre in the country. Presently ...<a href="https://www.jdwnrh.gov.bt/departments/clinical/othorpedic/" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+            </div><!-- end of the row -->
+
+            <div class="row text-center">
+              <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-eye fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Ophthalmology</h3>
+                        <p>The ophthalmic department was created in 1987 with the training of the country first National Ophthalmologist Dr. Kunzang Getshe...<a href="https://www.jdwnrh.gov.bt/departments/clinical/opthalmology/ophthalmology-services/" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-deaf fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Otorhinolaryngology/ENT</h3>
+                        <p>Currently there are three national ENT surgeons and one expatriate surgeon. Currently there are two...<a href="https://www.jdwnrh.gov.bt/departments/clinical/ent/" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature">
+                        <i class="fas fa-child fa-4x" data-fa-transform="shrink-3"></i>
+                        <h3>Paediatrics</h3>
+                        <p>The essence of paediatrics is to give service to those most deserving of a good life, with the deepest need, and ...<a href="https://www.jdwnrh.gov.bt/departments/clinical/paediatrics/" target="_blank">READ MORE</a></p>
+
+                    </div>
+                </div>
+
+            </div><!-- end of the row -->
+            </div><!-- end of jambotron -->
+        </div><!-- end of narrow -->
+    </div>
+    <!-- close department section -->
+     <!-- close notice section -->
+
+     <!-- start service -->
+    <div id="service" class="offset">
+        <div class="fixed-background">
+        <div class="row dark text-center">
+            <div class="col-12">
+                <h3 class="heading text-center">services</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="col-md-4">
+                <i class="fas fa-ambulance fa-4x" data-fa-transform="shrink-3" ></i>
+                <h4 class="text-center service-list">24hrs emergency service</h4>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-stethoscope fa-4x" data-fa-transform="shrink-3" ></i>
+                <h4 class="text-center service-list">OPD service</h4>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-user-md fa-4x" data-fa-transform="shrink-3" ></i>
+                <h4 class="text-center service-list">Community service</h4>
+            </div>
+        </div>
+        <div class="fixed-wrap">
+            <div class="fixed"></div>
+        </div>
+    </div><!--  end of fixed-background -->
+    </div>
+    <!-- end service section -->
+
+    <!-- start highlight section -->
+    <div id="highlight" class="offset">
+
+            <div class="col-12">
+                <h3 class="heading text-center">Highlight</h3>
+                <div class="heading-underline"></div>
+            </div>
+            <div class="container">
+            <div class="jumbotron hl-jumbotron">
+                <blockquote class="blockquote">
+                    <h5>Bhutan has confirmed the first case of Coronavirus this morning.</h5>
+                    <p> The patient is a 76-year-old tourist from the United States of America.
+                        He had entered the country from Paro International Airport, after embarking Drukair
+                        flight KB241 from Guwahati, India on March 2. ... <a href="https://kuenselonline.com/first-confirmed-coronavirus-case-in-bhutan/" target="_blank">
+                        READ MORE</a></p>
+
+                    <footer class="blockquote-footer text-right">Kuensel <cite title="Source Title">March 6, 2020</cite></footer>
+                  </blockquote>
+             </div>
+            </div>
+
+             <!-- <div class="hl">
+                 <div class="row">
+                     <div class="col-12"><h3>COVID-19</h3></div>
+                 </div>
+
+                     <div class="row text-center hl-links">
+                        <div class="col-4 "><a href="#">protect yourself</a></div>
+                        <div class="col-4"><a href="#">protect others</a></div>
+                        <div class="col-4"><a href="#">cope with stress during outbreak</a></div>
+                    </div>
+             </div> -->
+
+
+
+
+    </div>
+   <!-- end highlight section -->
+    <!-- start contact section -->
+    <div id="contact" class="offset">
+        <div class="narrow text-center">
+            <h3 class="heading text-center">contact us</h3>
+            <div class="heading-underline bg-light"></div>
+        </div>
+        <div class="row">
+         <div class="col-md-4 text-center">
+            <h5>ADDRESS</h5>
+            <p style="font-size: small;">JIGME DORJI WANGCHUCK NATIONAL REFFERAL HOSPITAL <BR>
+                THIMPHU, BHUTAN<BR><BR>
+                PO BOX NO. 128<BR><BR>
+
+                Phone: +975-322496/322497/325244<BR><br>
+                Fax No: +975-2-325384
+
+                </p>
+        </div>
+        <div class="col-md-8">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.1774234978607!2d89.63607791388078!3d27.4637352427649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e1940e86a8ee65%3A0x7c4e9f89b875a76c!2sJigme%20Dorji%20Wangchuck%20National%20Referral%20Hospital!5e0!3m2!1sen!2sbt!4v1583729198191!5m2!1sen!2sbt""></iframe>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    <!-- close contact section -->
+    <div class="footer text-center">
+        <small  >&copy; Copyright 2020 SowaInfo </small>
+    </div>
+
+
+
+<%-include("./partials/footer.ejs")%>

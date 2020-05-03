@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+  <title>Lab Technician's Dashboard</title> 
+  <head>
+    <!-- <title>Doctors Panel</title> -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/labtech.css">
+    <link rel="stylesheet" href="../stylesheets/button.css">
+    <script src="https://kit.fontawesome.com/fec7077de1.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"> -->
+
+    <!-- clock -->
+<link rel="stylesheet" href="../stylesheets/clock.css">
+
+<!-- end of clock -->
+</head>
+<body>
+
+      <!-- nav bar -->
+      <nav class="navbar navbar-expand-md navbar-light">
+        <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#navbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar"> 
+          <div class="container-fluid">
+            <div class="row">
+              <!-- Side bar -->
+              <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top"> 
+                
+                <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4">
+                  <img src="../image/logo.png" alt="" style=" height: 4rem; ">
+                </a>
+                
+                <ul class="nav nav-tabs navbar-nav flex-column mt-4">
+                  <li class="nav-item">
+                    <a href="#profile" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-user text-dark fa-lg mr-3"> </i> Profile
+                    </a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-home text-dark fa-lg mr-3"> </i> Dashboard
+                    </a>
+                  </li>
+    
+                  
+                    
+                  <li class="nav-item">
+                    <a href="#patient" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-user-injured text-dark fa-lg mr-3"> </i>Patient
+                    </a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a href="#report" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-book text-dark fa-lg mr-3"> </i>Report
+                    </a>
+                  </li>
+    
+                  
+                </ul>
+              </div>      
+              <!-- end of side bar -->
+            </div>
+          </div>
+        </div>
+      </nav>    
+      <!-- end of nav bar -->
+  
+      <!-- panel -->
+      <div class=" col-xl-10 col-lg-9 col-md-8  ml-auto top-bar top-nav">
+        <div class="tab-content">
+        
+            <!-- profile -->
+          <div role="tabpanel" class="tab-pane" id="profile">
+            <!-- profile top nav -->
+            <div class="row p-2 allnav">
+              <div class="col-10">
+                <h4 class="text-light text-uppercase mb-1">Profile</h4>
+              </div>
+              <div class="col-2">
+                <ul class="navbar-nav">
+                  <li class="nav-item ml-md-auto">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                      <i class="fa fa-power-off text-white fa-lg"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- End of profileTop Nav -->
+
+            <!-- profile body -->
+            <div class="container-fluid bg-light py-3"  >
+              <!-- tab panel -->
+              <div class="row">
+                <div class="col-md-12">
+                    <ul id="tabs" class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a href="" data-target="#userProfile" data-toggle="tab" class="nav-link small text-uppercase active">User Profile
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="" data-target="#editProfile" data-toggle="tab" class="nav-link small text-uppercase">Edit Profile
+                          </a>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <div id="tabsContent" class="tab-content">
+                        <div id="userProfile" class="tab-pane fade active show  ">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSVqLN03wz-oT5rlRKuqKDJP1FRbQfAzSaelDU18Z8S_Ces_j5M&usqp=CAU" class="avatar rounded-circle img-thumbnail" alt="avatar" width="200" height="200"><br>
+                                <hr>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="card" >
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">Name:- <%=user.username%> </li>
+                                      <li class="list-group-item">Email:- <%=user.email%> </li>
+                                      <li class="list-group-item">Citizenship ID:- <%=user.cid%> </li>
+                                      <li class="list-group-item">Date Of Birth:- <%=user.dob.toDateString()%> </li>
+                                      <li class="list-group-item">Phone Number:- <%=user.phonenumber%> </li>
+                                      <li class="list-group-item">Address:- <%=user.address%> </li>
+                                    </ul>
+                                  </div>
+                                  <hr>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div id="editProfile" class="tab-pane fade">
+
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- use cropper js -->
+                                  <input type="file" class="text-center center-block file-upload my-3"><br>
+                                  <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar" width="200" height="200"><br>
+                                  <h6 class="mt-2">Upload a different photo...</h6>
+                                  <hr>
+                              </div>
+                              <div class="col-md-6">
+                                <form>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="uname">Name: </label>
+                                      <input type="text" class="form-control" id="uname" value="<%=user.username%> ">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="email">Email: </label>
+                                      <input type="email" class="form-control" id="email" value="<%=user.email%>">
+                                    </div>
+                                  </div>
+      
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="cid">Citizenship ID: </label>
+                                      <input type="number" class="form-control" id="cid" value="<%=user.cid%>" >
+                                    </div>
+                                    
+                                    <div class="form-group col-md-6">
+                                      <label for="oldPassword">Old Password: </label>
+                                      <input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
+                                    </div>
+                                  </div>
+      
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="newPassword">New Password: </label>
+                                      <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="conPassword">Confirm Password: </label>
+                                      <input type="password" class="form-control" id="conPassword" placeholder="Confirm Password">
+                                    </div>
+                                  </div>
+      
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="phonenumber">Phone Number: </label>
+                                      <input type="text" class="form-control"  id="phonenumber" value="<%=user.phonenumber%>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="dob">Date Of Birth: </label>
+                                      <input type="date" class="form-control" id="dob" value="<%=user.dob.toDateString()%>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="address">Address: </label>
+                                      <input type="text" class="form-control" id="address" value="<%=user.address%>">
+                                    </div>
+                                  </div>
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Save</button>
+                                    <button class="btn btn-lg btn-danger type="reset"><i class="glyphicon glyphicon-repeat"></i>Reset</button>
+                                </form>
+                                <hr>
+      
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!-- end of tab panel -->
+            </div>
+            <!-- end of profile body-->
+          </div>
+          <!-- end of profile -->
+
+          <!-- dashboard -->
+          <div role="tabpanel" class="tab-pane active" id="dashboard">  
+            
+            <!-- dashboard top nav -->
+            <div class="row p-2 allnav">
+              <div class="col-10">
+                <h4 class="text-light text-uppercase mb-1"> Dashboard</h4>
+              </div>
+              <div class="col-2">
+                <ul class="navbar-nav">
+                  <li class="nav-item ml-md-auto">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                      <i class="fa fa-power-off text-white fa-lg"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>  
+            </div>
+            <!-- End of dashboard Top Nav -->
+
+            <!-- dashboard body -->
+            <div class="container-fluid bg-light py-3" >
+                
+                <!-- cards -->
+                <div class="row my-2">
+                  <div class="col-xl-6 col-sm-6 p-2">
+                    <div class="card card-common">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                              <i class="fa fa-user-injured fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer text-dark">
+                            <span> Total Patients : 13 </span>                              
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-sm-6 p-2">
+                  <div class="card card-common">
+                      <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <i class="fa fa-book fa-3x"></i>
+                          </div>
+                      </div>
+                      <div class="card-footer text-dark">
+                          <span> Total Reports : 9</span>                          
+                      </div>
+                  </div>
+                </div>
+
+              
+
+              </div>
+                <!-- end of cards -->
+
+
+                <!-- notice -->
+                <div class="card" style="margin: 0px -8px;">
+                  <h5 class="card-header">Notice</h5>
+                  <div class="card-body" id="notices">
+                    <div class="row mb-1">
+                          <div class="card bg-light">
+                                                        
+                            <h5 class="card-title">Restocking of Covid-19 test kits</h5>
+                                <p>
+                                  The Ministry of Health has granted the approval of 30,000 masks and 10,000 test kits for covid-19.
+                                </p>
+                                <br>
+                            <h5 class="card-title">Selection Interview for the post of Head Lab Technician</h5>
+                                <p>
+                                  The Ministry of Health would like to inform that the selection interview for the post of Head Lab Technician is scheduled on 29 April 2020. Therefore, all the shortlisted candidates are asked to report to the Ministry of Health at 9:00 am along with all the original documents including certificates in co-curricular activities, if any.
+                                </p>
+
+                                <br>
+
+                                <h5 class="card-title">Notification: Routine immunization</h5>
+                                <p>
+                                  The Ministry of Health requests to everyone to please bring your children for their routine vaccination as per the dates/schedule.
+                                </p>
+
+                                <br>
+                                <h5 class="card-title"> Daily Routine checkups</h5>
+                                <p>
+                                  After all the medical tests have been completed for the day, call the sanitizing team to sanitizing all the surfaces of the lab, to avoid the spread of the nobel virus(covid-19).
+                                </p>
+
+                          </div>                                   
+                    </div>
+                  </div>
+                </div>
+                <!-- end of notice -->
+
+                <!--schedule-->
+                <div class="card" style="margin: 15px -7px 0 -7px;">
+                  <div class="card-header ">
+                    Schedule
+                  </div>
+                  <div class="card-body">
+                  <div style="overflow-x: auto;">
+                    <table class="table table-striped table-bordered" id="schTable" style="width:100%">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Designation</th>
+                          <th>From Date</th>
+                          <th>To Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Chophel</td>
+                          <td>chophell@gmail.com</td>
+                          <td>Lab Technician</td>
+                          <td>15/02/2020</td>
+                          <td>21/02/2020</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Designation</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                          </tr>
+                      </tfoot>
+                    </table>
+                </div>
+              </div>
+                  
+                </div>
+                <!--end of schedule-->
+
+                
+
+                <!-- quick post -->
+                <div class="col mt-3">
+                  <div class="card rounded" style="margin: 0 -21px;" >
+                      <div class="card-body">
+                        <div class="row align-items-center mb-1">
+
+                          <div class="col-md-6 mt-2">
+                              <div class="card bg-light">
+                                <div class="card-body">
+                                  <iframe src="https://calendar.google.com/calendar/embed?src=pf0nuu14uslitvdg6bvcbt1hvk%40group.calendar.google.com&ctz=Asia%2FThimphu" style="border: 0" width="400" height="400" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                              </div>
+                          </div> 
+                          
+                          <div class="col-md-6 mt-2">
+                              <div class="card bg-light">
+                                <div class="card-body">
+                                  <div class="container">
+                                    <div id="clock">
+  
+                                      <div id="time">
+                                          <div>
+                                              <span id="hour">00</span>
+                                              <span>Hours</span>
+                                          </div>
+                          
+                                          <div>
+                                              <span id="minutes">00</span>
+                                              <span>Minutes</span>
+                                          </div>
+                          
+                                          <div>
+                                              <span id="seconds">00</span>
+                                              <span>Seconds</span>
+                                          </div>
+                          
+                                      </div>
+                                  </div>
+  
+                                   </div>
+                                </div>
+                              </div>
+                          </div>
+
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <!--  end of quick post -->
+
+                <!-- footer -->
+                <div class="row border-top pt-3 mt-3">
+                  <div class="col text-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> Company Name </a>
+                      </li>
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> About </a>
+                      </li>
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> Support </a>
+                      </li>
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> Blog </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6 text-center text-info">
+                      <p>&copy; 2020 Copyright</p>
+                  </div>
+              </div>
+                <!-- end of footer -->
+            </div>
+            <!-- end of dashboard body -->
+
+          </div>  
+          <!-- end of dashboard -->
+
+          <!-- patient -->
+          <div role="tabpanel" class="tab-pane" id="patient">
+            <!-- Patient top nav -->
+
+            <div class="row p-2 allnav">
+                <div class="col-10">
+                    <h4 class="text-light text-uppercase mb-1">Patient</h4>
+                </div>
+                <div class="col-2">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ml-md-auto">
+                      <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                        <i class="fa fa-power-off text-white fa-lg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <!-- End of Patient Top Nav -->
+
+            <!-- patient body -->
+            <div class="container-fluid bg-light py-3"  >
+
+                <!-- tables -->
+                <div class="row">
+                  <div class="col">
+                    <h3 class="text-dark text-center my-3"> List of Patients</h3>
+
+                    <!-- tables -->
+                    <div style="overflow-x: auto;">
+                        <table class="table table-striped table-bordered" id="patTable" style="width:100%">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Citizenship ID</th>
+                              <th>Date Of Birth</th>
+                              <th>Email</th>
+                              <th>Phone Number</th>
+                              <th>Address</th>
+                              <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Samdrup</td>
+                            <td>201520591</td>
+                            <td>02-07-1951</td>
+                            <td>samdrup@gmail.com</td>
+                            <td>17454532</td>
+                            <td>Haa</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Tapula</td>
+                            <td>105502291</td>
+                            <td>21-08-2007</td>
+                            <td>tapula@gmail.com</td>
+                            <td>17456032</td>
+                            <td>Kakaling</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>  
+                          </tr>
+                          <tr>
+                            <td>Thinley Dorji</td>
+                            <td>2005040001</td>
+                            <td>21-08-2004</td>
+                            <td>tdorji@gmail.com</td>
+                            <td>174564032</td>
+                            <td>Gasa</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Thinley Choden</td>
+                            <td>1456489</td>
+                            <td>14-01-2000</td>
+                            <td>tchoden@gmail.com</td>
+                            <td>7752332</td>
+                            <td>Chamkhar</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Wangmo</td>
+                            <td>200054491</td>
+                            <td>14-07-1992</td>
+                            <td>wangmo@gmail.com</td>
+                            <td>17955032</td>
+                            <td>Gelephu</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Ishan</td>
+                            <td>100580091</td>
+                            <td>21-02-1997</td>
+                            <td>ishan@gmail.com</td>
+                            <td>7754122</td>
+                            <td>Samtse</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Manta</td>
+                            <td>300590091</td>
+                            <td>14-01-1994</td>
+                            <td>manta@gmail.com</td>
+                            <td>77955032</td>
+                            <td>Samtse</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Jit Kumar</td>
+                            <td>4005610325</td>
+                            <td>01-01-1982</td>
+                            <td>jkumar@gmail.com</td>
+                            <td>17156454</td>
+                            <td>Tsirang</td>
+                            <td>
+                              <div class="text-center">
+                                <a href="#" data-toggle="modal" data-target="#patModal"><i class="fa fa-eye aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                </i></a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+
+                        <tfoot>
+                          <tr>
+                            <th>Name</th>
+                            <th>Citizenship ID</th>
+                            <th>Date Of Birth</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                          </tr>
+                        </tfoot>
+                        </table>
+                    </div>
+                    <!-- end of tables -->
+
+                  </div>
+                </div>
+                <!-- end of tables -->
+              
+                <!-- edit modal -->
+                <div class="container">
+                  <!-- The Modal -->
+                  <div class="modal" id="patModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h1 class="modal-title">View Details</h1>
+                          <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-row">  
+                              <div class="col-md-6">
+                                <p><strong> Type of Checkup :- </strong>  X-ray </p>
+                              </div>
+                              <div class="col-md-6">
+                                <p> <strong>Date of Checkup :-</strong> 06/02/2020 </p>
+                              </div>
+                            </div>
+
+                            <div class="form-row">  
+                              <div class="col-md-6">
+                                <p> <strong>Medicine :-</strong> Antibiotics(5 day course), Antiswell cream, Muscle bandage </p>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <p> <strong>Checked By :-</strong> Dr.Dawa</p>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                              <p> <strong>Reason for Checkup :-</strong></p>
+                              <div style="height: 100px; width: 100%; border: 1px solid black;">
+                                Had ankleaches continously for few days due to an injury playing football
+                            </div>
+                          </div>
+                            
+                            <div class="form-row">
+                                <p> <strong>Diagnosis :-</strong></p>
+                                <div style="height: 100px; width: 100%; border: 1px solid black;">
+                                  Small Fracture on the ankle, Slight tear on the ankle tendon, Rest for 2 weeks
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end of edit modal -->
+
+            </div>
+            <!-- end of patient body -->
+          </div>
+          <!-- end of patient -->
+
+          <!-- report -->
+          <div role="tabpanel" class="tab-pane" id="report">
+            <!-- report top nav -->
+              <div class="row p-2 allnav">
+                <div class="col-10">
+                    <h4 class="text-light text-uppercase mb-1">Report</h4>
+                </div>
+                <div class="col-2">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ml-md-auto">
+                      <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                        <i class="fa fa-power-off text-white fa-lg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>  
+              <!-- </div> -->
+            </div>  
+            <!-- End of report Top Nav -->
+
+            <!-- report body -->
+            <div class="container-fluid bg-light py-3"  >
+                <!-- tables -->
+                <div class="row">
+                  <div class="col">
+                    <h3 class="text-dark text-center my-3"> Report List</h3>
+
+                    <!-- tables -->
+                    <div style="overflow-x: auto;">
+                        <table class="table table-striped table-bordered" id="RepTable" style="width:100%">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Citizenship ID</th>
+                              <th>Date Of Birth</th>
+                              <th>Email</th>
+                              <th>Phone Number</th>
+                              <th>Address</th>
+                              <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Karma</td>
+                            <td>100050091</td>
+                            <td>14-01-1994</td>
+                            <td>karma@gmail.com</td>
+                            <td>77955032</td>
+                            <td>Samdrup Jongkhar</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Samdrup</td>
+                            <td>201520591</td>
+                            <td>02-07-1951</td>
+                            <td>samdrup@gmail.com</td>
+                            <td>17454532</td>
+                            <td>Haa</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Tapula</td>
+                            <td>105502291</td>
+                            <td>21-08-2007</td>
+                            <td>tapula@gmail.com</td>
+                            <td>17456032</td>
+                            <td>Kakaling</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Thinley Dorji</td>
+                            <td>2005040001</td>
+                            <td>21-08-2004</td>
+                            <td>tdorji@gmail.com</td>
+                            <td>174564032</td>
+                            <td>Gasa</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Pema Dorji</td>
+                            <td>2058050091</td>
+                            <td>02-01-2014</td>
+                            <td>pdorji@gmail.com</td>
+                            <td>17596332</td>
+                            <td>Lhuentse</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Thinley Choden</td>
+                            <td>1456489</td>
+                            <td>14-01-2000</td>
+                            <td>tchoden@gmail.com</td>
+                            <td>7752332</td>
+                            <td>Chamkhar</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Wangmo</td>
+                            <td>200054491</td>
+                            <td>14-07-1992</td>
+                            <td>wangmo@gmail.com</td>
+                            <td>17955032</td>
+                            <td>Gelephu</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Ishan</td>
+                            <td>100580091</td>
+                            <td>21-02-1997</td>
+                            <td>ishan@gmail.com</td>
+                            <td>7754122</td>
+                            <td>Samtse</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Manta</td>
+                            <td>300590091</td>
+                            <td>14-01-1994</td>
+                            <td>manta@gmail.com</td>
+                            <td>77955032</td>
+                            <td>Samtse</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Kuendrup</td>
+                            <td>20150091</td>
+                            <td>14-04-2004</td>
+                            <td>kuendrup@gmail.com</td>
+                            <td>7745612</td>
+                            <td>Tsirang</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Yosel</td>
+                            <td>20010091</td>
+                            <td>23-01-1998</td>
+                            <td>yosel@gmail.com</td>
+                            <td>1745242</td>
+                            <td>Thimphu</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Gyempo</td>
+                            <td>2001554484</td>
+                            <td>07-07-2007</td>
+                            <td>gyempo@gmail.com</td>
+                            <td>7778484</td>
+                            <td>Kalikhola</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Jit Kumar</td>
+                            <td>4005610325</td>
+                            <td>01-01-1982</td>
+                            <td>jkumar@gmail.com</td>
+                            <td>17156454</td>
+                            <td>Tsirang</td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#RepModal"><i class="fa fa-pencil text-success aria-hidden="true"></i></a>&nbsp;&nbsp;
+                              <a href="#"><i class="fa fa-trash text-danger aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+
+                        <tfoot>
+                          <tr>
+                            <th>Name</th>
+                            <th>Citizenship ID</th>
+                            <th>Date Of Birth</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                          </tr>
+                        </tfoot>
+                        </table>
+                    </div>
+                    <!-- end of tables -->
+
+                  </div>
+                </div>
+                <!-- end of tables -->
+
+               <!-- edit modal -->
+               <div class="container">
+                <!-- The Modal -->
+                <div class="modal" id="RepModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h1 class="modal-title">Check Patient</h1>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                      </div>
+
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="uname">Name: </label>
+                              <input type="text" class="form-control" id="uname">
+                            </div>
+                            
+                          
+                            <div class="form-group col-md-6">
+                              <label for="cid">Citizenship ID: </label>
+                              <input type="number" class="form-control" id="cid" >
+                            </div>
+                          </div>
+                          
+                          <div class="form-row">  
+                            <div class="form-group col-md-6">
+                              <label for="Type">Type of Checkup: </label>
+                              <input type="text" class="form-control" id="Type" placeholder="Type of Checkup">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="Date">Date of Checkup: </label>
+                              <input type="date" class="form-control" id="Date" placeholder="Date of Checkup">
+                            </div>
+                          </div>
+
+                          <div class="form-row">  
+                            <div class="form-group col-md-6">
+                              <label for="Type">Medicine: </label>
+                              <input type="text" class="form-control" id="Med" placeholder="Medicine">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="Date">Checked By:</label>
+                              <input type="text" class="form-control" id="check" placeholder="Checked By">
+                            </div>
+                          </div>
+
+                          <div class="form-row">
+                            <div class="form-group">
+                              <label for="textarear">Diagnosis</label>
+                              <textarea cols="56" rows="10" id="textarear">
+  
+                              </textarea>
+  
+                            
+                            </div>
+                          </div>
+
+                          
+                            <button type="submit" class="btn btn-info">UPDATE</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end of edit modal -->
+
+            </div>
+            <!-- end of report body  -->
+          </div>
+          <!-- end of report -->
+          
+        </div>
+      </div>
+      <!-- end of panel -->
+
+        <!-- Modal for sign out -->
+        <div class="modal" id="sign-out">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header justify-content-center">
+                    <h4 class="modal-title"> LOGOUT</h4>
+                </div>
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-success"  ><a href="/" class="text-white">Leave</a></button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of modal for sign out -->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/labtech.js"></script>
+
+      
+    <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+</body>
+</html>

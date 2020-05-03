@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+  <title>Pateint's Dashboard</title>
+  <head>
+    <!-- <title>Doctors Panel</title> -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/patient.css">
+    <link rel="stylesheet" href="../stylesheets/button.css">
+    <script src="https://kit.fontawesome.com/fec7077de1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../stylesheets/clock.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"> -->
+
+</head>
+<body>
+
+      <!-- nav bar -->
+      <nav class="navbar navbar-expand-md navbar-light">
+        <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#navbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar"> 
+          <div class="container-fluid">
+            <div class="row">
+              <!-- Side bar -->
+              <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top"> 
+                
+                <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4">
+                  <img src="../image/logo.png" alt="" style=" height: 4rem; ">
+                </a>
+                
+                <ul class="nav nav-tabs navbar-nav flex-column mt-4">
+                  <li class="nav-item">
+                    <a href="#profile" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-user text-dark fa-lg mr-3"> </i> Profile
+                    </a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-home text-dark fa-lg mr-3"> </i> Dashboard
+                    </a>
+                  </li>
+    
+                  
+                    
+                  <li class="nav-item">
+                    <a href="#appointment" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-calendar-check text-dark fa-lg mr-3"> </i>Appointment
+                    </a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a href="#report" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-book text-dark fa-lg mr-3"> </i>Report
+                    </a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a href="#diagnosis" class="nav-link text-dark p-3 mb-2 current" data-toggle="tab">
+                      <i class="fa fa-comment-medical text-dark fa-lg mr-3"> </i>Diagnosis
+                    </a>
+                  </li>
+                </ul>
+              </div>      
+              <!-- end of side bar -->
+            </div>
+          </div>
+        </div>
+      </nav>    
+      <!-- end of nav bar -->
+  
+      <!-- panel -->
+      <div class=" col-xl-10 col-lg-9 col-md-8  ml-auto top-bar top-nav">
+        <div class="tab-content">
+        
+           <!-- profile -->
+           <div role="tabpanel" class="tab-pane" id="profile">
+            <!-- profile top nav -->
+            <div class="row p-2 allnav">
+              <div class="col-10">
+                <h4 class="text-light text-uppercase mb-1">Profile</h4>
+              </div>
+              <div class="col-2">
+                <ul class="navbar-nav">
+                  <li class="nav-item ml-md-auto">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                      <i class="fa fa-power-off text-white fa-lg"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- End of profileTop Nav -->
+
+            <!-- profile body -->
+            <div class="container-fluid bg-light py-3"  >
+              <!-- tab panel -->
+              <div class="row">
+                <div class="col-md-12">
+                    <ul id="tabs" class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a href="" data-target="#userProfile" data-toggle="tab" class="nav-link small text-uppercase active">User Profile
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="" data-target="#editProfile" data-toggle="tab" class="nav-link small text-uppercase">Edit Profile
+                          </a>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <div id="tabsContent" class="tab-content">
+                        <div id="userProfile" class="tab-pane fade active show  ">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <img src="https://solarisstudios.com/wp-content/uploads/2019/07/Solaris2165_Hoek_021d_500px-300x300.jpg" class="avatar rounded-circle img-thumbnail" alt="avatar" width="200" height="200"><br>
+                                <hr>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="card" >
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">Name:- <%=user.username%> </li>
+                                      <li class="list-group-item">Email:- <%=user.email%> </li>
+                                      <li class="list-group-item">Citizenship ID:- <%=user.cid%> </li>
+                                      <li class="list-group-item">Date Of Birth:- <%=user.dob.toDateString()%> </li>
+                                      <li class="list-group-item">Phone Number:- <%=user.phonenumber%> </li>
+                                      <li class="list-group-item">Address:- <%=user.address%> </li>
+                                    </ul>
+                                  </div>
+                                  <hr>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div id="editProfile" class="tab-pane fade">
+
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <!-- use cropper js -->
+                                  <input type="file" class="text-center center-block file-upload my-3"><br>
+                                  <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar" width="200" height="200"><br>
+                                  <h6 class="mt-2">Upload a different photo...</h6>
+                                  <hr>
+                              </div>
+                              <div class="col-md-6">
+                                <form>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="uname">Name: </label>
+                                      <input type="text" class="form-control" id="uname" value="<%=user.username%> ">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="email">Email: </label>
+                                      <input type="email" class="form-control" id="email" value="<%=user.email%>">
+                                    </div>
+                                  </div>
+      
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="cid">Citizenship ID: </label>
+                                      <input type="number" class="form-control" id="cid" value="<%=user.cid%>" >
+                                    </div>
+                                    
+                                    <div class="form-group col-md-6">
+                                      <label for="oldPassword">Old Password: </label>
+                                      <input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
+                                    </div>
+                                  </div>
+      
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="newPassword">New Password: </label>
+                                      <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="conPassword">Confirm Password: </label>
+                                      <input type="password" class="form-control" id="conPassword" placeholder="Confirm Password">
+                                    </div>
+                                  </div>
+      
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="phonenumber">Phone Number: </label>
+                                      <input type="text" class="form-control"  id="phonenumber" value="<%=user.phonenumber%>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="dob">Date Of Birth: </label>
+                                      <input type="date" class="form-control" id="dob" value="<%=user.dob.toDateString()%>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="address">Address: </label>
+                                      <input type="text" class="form-control" id="address" value="<%=user.address%>">
+                                    </div>
+                                  </div>
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Save</button>
+                                    <button class="btn btn-lg btn-danger type="reset"><i class="glyphicon glyphicon-repeat"></i>Reset</button>
+                                </form>
+                                <hr>
+      
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!-- end of tab panel -->
+            </div>
+            <!-- end of profile body-->
+          </div>
+          <!-- end of profile -->
+
+          <!-- dashboard -->
+          <div role="tabpanel" class="tab-pane active" id="dashboard">  
+            
+            <!-- dashboard top nav -->
+            <div class="row p-2 allnav">
+              <div class="col-10">
+                <h4 class="text-light text-uppercase mb-1"> Dashboard</h4>
+              </div>
+              <div class="col-2">
+                <ul class="navbar-nav">
+                  <li class="nav-item ml-md-auto">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                      <i class="fa fa-power-off text-white fa-lg"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>  
+            </div>
+            <!-- End of dashboard Top Nav -->
+
+            <!-- dashboard body -->
+            <div class="container-fluid bg-light py-3" >
+
+              
+              <div class="img-thumbnail mb-3">
+                <!-- slider -->
+                <div class="landing">
+                  <div class="home-wrap">
+                      <ul class="slideshow">
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                      </ul>
+                  </div>
+                </div>
+                
+                <div class="caption">
+                    <h1> Welcome to Sowa-Info </h1>
+                </div>
+              </div>
+                
+                <!-- end of slider -->
+
+                <!--notice-->
+                <div class="card" style="margin: 0px -8px;">
+                  <h5 class="card-header">Notice</h5>
+                  <div class="card-body" id="notices">
+                    <div class="row mb-1">
+                          <div class="card bg-light">
+                            
+
+                            <h5 class="card-title">Appointment Approval</h5>
+                            <p>
+                              Your appointment has been approved for the dates 4th of May around 10:30am.
+                            </p>
+                            <br>
+                            
+                            <h5 class="card-title">Appointment of five Specialists</h5>
+                                <p>
+                                  The Ministry of Health appointed five Specialists on contract for two years w.e.f. 15 April 2020 to three referral hospitals. The Contract agreement was signed today with the Hon’ble Health Secretary. The appointed Doctors paid courtesy call to the Hon’ble Health Minister.
+                                </p>
+                                <br>
+                            <h5 class="card-title">Selection Interview for the post of Nurse, Pharmacist and Counselor</h5>
+                                <p>
+                                  The Ministry of Health would like to inform that the selection interview for the post of Clinical Nurse, Pharmacist, and Clinical Counselor is scheduled on 29 April 2020. Therefore, all the shortlisted candidates are asked to report to the Ministry of Health at 9:00 am along with all the original documents including certificates in co-curricular activities, if any.
+                                </p>
+
+                                <br>
+
+                                <h5 class="card-title">Notification: Routine immunization</h5>
+                                <p>
+                                  The Ministry of Health requests to everyone to please bring your children for their routine vaccination as per the dates/schedule.
+                                </p>
+
+                                <br>
+                                <h5 class="card-title"> First Batch of Basic Frontline Responders for COVID-19 completes their Training</h5>
+                                <p>
+                                  The 1st batch of six-day Basic Frontline Responders for COVID-19 course, which started on 20th April 2020, was successfully completed with award of certificate of completion to the participants yesterday (25th April, 2020). The first batch saw 30 participants, who were all Desuups that will be called as Desuup Plus. These Basic Frontline Responders for COVID-19 will be deployed in case Bhutan enters into Red-Stage of COVID-19 pandemic and will act as assistant nurses in managing asymptomatic and mild COVID-19 cases in the country.
+                                </p>
+
+                             
+
+                          </div>                                   
+                    </div>
+                  </div>
+                </div>
+                <!--end of notice-->
+
+                
+
+                <!-- quick post -->
+                <div class="col mt-3">
+                  <div class="card rounded" style="margin: 0 -21px;" >
+                      <div class="card-body">
+                        <div class="row align-items-center mb-1">
+
+                          <div class="col-md-6 mt-2">
+                              <div class="card bg-light">
+                                <div class="card-body">
+                                  <iframe src="https://calendar.google.com/calendar/embed?src=pf0nuu14uslitvdg6bvcbt1hvk%40group.calendar.google.com&ctz=Asia%2FThimphu" style="border: 0" width="400" height="400" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                              </div>
+                          </div> 
+                          
+                          <div class="col-md-6 mt-2">
+                              <div class="card bg-light">
+                               
+                                <div class="card-body">
+                                 <div class="container">
+                                  <div id="clock">
+
+                                    <div id="time">
+                                        <div>
+                                            <span id="hour">00</span>
+                                            <span>Hours</span>
+                                        </div>
+                        
+                                        <div>
+                                            <span id="minutes">00</span>
+                                            <span>Minutes</span>
+                                        </div>
+                        
+                                        <div>
+                                            <span id="seconds">00</span>
+                                            <span>Seconds</span>
+                                        </div>
+                        
+                                    </div>
+                                </div>
+
+                                 </div> 
+                                </div>
+                              </div>
+                          </div>
+
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <!--  end of quick post -->
+
+                <!-- footer -->
+                <div class="row border-top pt-3 mt-3">
+                  <div class="col text-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> Company Name </a>
+                      </li>
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> About </a>
+                      </li>
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> Support </a>
+                      </li>
+                      <li class="list-inline-item mr-2">
+                        <a href="#" class="text-"> Blog </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6 text-center text-info">
+                      <p>&copy; 2020 Copyright</p>
+                  </div>
+              </div>
+                <!-- end of footer -->
+            </div>
+            <!-- end of dashboard body -->
+
+          </div>  
+          <!-- end of dashboard -->
+
+          
+
+          <!-- Appointment -->
+          <div role="tabpanel" class="tab-pane" id="appointment">
+            <!-- Appointment top nav -->
+              <div class="row p-2 allnav">
+                <div class="col-10">
+                    <h4 class="text-light text-uppercase mb-1">Appointment</h4>
+                </div>
+                <div class="col-2">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ml-md-auto">
+                      <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                        <i class="fa fa-power-off text-white fa-lg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>  
+              </div>  
+            <!-- End of appointmentTop Nav -->
+
+            <!-- appointment body -->
+            <div class="container-fluid bg-light py-3"  >
+                <!-- tables -->
+                <div class="row">
+                  <div class="col">
+                    <h3 class="text-dark text-center my-3"> Make an Appointment</h3>
+                    <!-- Add Appointment Button -->
+                      <form>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="uname">Name: </label>
+                            <input type="text" class="form-control" id="uname">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="email">Email: </label>
+                            <input type="email" class="form-control" id="email">
+                          </div>
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="cid">Citizenship ID: </label>
+                            <input type="number" class="form-control" id="cid">
+                          </div>
+                          
+                          <div class="form-group col-md-6">
+                            <label for="address">Address: </label>
+                            <input type="text" class="form-control" id="address">
+                          </div>
+                          
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="phonenumber">Phone Number: </label>
+                            <input type="text" class="form-control"  id="phonenumber">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="dob">Date Of Birth: </label>
+                            <input type="date" class="form-control" id="dob">
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group">
+                            <label for="textarea">Reason for Checkup</label>
+                            <textarea cols="131" rows="8" id="textarea">
+                            </textarea>
+                          </div>
+                        </div>
+
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-info">Apply For Appointment</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+            </div>
+            <!-- end of appointment body -->
+          </div>
+          <!-- end of appointment -->
+
+          <!-- report -->
+          <div role="tabpanel" class="tab-pane" id="report">
+            <!-- report top nav -->
+              <div class="row p-2 allnav">
+                <div class="col-10">
+                    <h4 class="text-light text-uppercase mb-1">Report</h4>
+                </div>
+                <div class="col-2">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ml-md-auto">
+                      <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                        <i class="fa fa-power-off text-white fa-lg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>  
+              <!-- </div> -->
+            </div>  
+            <!-- End of report Top Nav -->
+
+            <!-- report body -->
+            <div class="container-fluid bg-light py-3"  >
+                <!-- tables -->
+                <div class="row">
+                  <div class="col">
+                    <h3 class="text-dark text-center my-3"> Reports</h3>
+                    
+                    <!-- tables -->
+                    <div style="overflow-x: auto;">
+                      <table class="table table-striped table-bordered" id="RepTable" style="width:100%">
+                        <thead>
+                            <tr>
+                              <th>Type of Checkup</th>
+                              <th>Date of Checkup</th>
+                              <th>Report</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>X-ray</td>
+                            <td>28/02/2020</td>
+                            <td>Minor fracture on the ankle</td>
+                          </tr>
+                          <tr>
+                            <td>CT-Scan</td>
+                            <td>14/03/2020</td>
+                            <td>Swelling on right kidney</td>
+                          </tr>
+                          <tr>
+                            <td>Blood</td>
+                            <td>14/03/2020</td>
+                            <td>BP is very high</td>
+                          </tr>
+                          <tr>
+                            <td>Urine</td>
+                            <td>26/03/2020</td>
+                            <td>Positve for marijuana</td>
+                          </tr><tr>
+                            <td>Eye</td>
+                            <td>31/04/2020</td>
+                            <td>Farsighted, -4 on left eye</td>
+                          </tr><tr>
+                            <td>Blood</td>
+                            <td>05/05/2020</td>
+                            <td>HIV negative</td>
+                          </tr>
+                          <tr>
+                            <td>Blood</td>
+                            <td>06/02/2020</td>
+                            <td>B+</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                              <th>Type of Checkup</th>
+                              <th>Date of Checkup</th>
+                              <th>Report</th>
+                            </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <!-- end of tables -->
+                    
+                    
+                  </div>
+                </div>
+                <!-- end of tables -->
+
+            </div>
+            <!-- end of report body  -->
+          </div>
+          <!-- end of report -->
+
+          <!-- diagnosis -->
+          <div role="tabpanel" class="tab-pane" id="diagnosis">
+            <!-- diagnosis top nav -->
+            
+            <div class="row p-2 allnav"> 
+                <div class="col-10">
+                    <h4 class="text-light text-uppercase mb-1">Diagnosis</h4>
+                </div>
+                <div class="col-2">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ml-md-auto">
+                      <a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out">
+                        <i class="fa fa-power-off text-white fa-lg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>  
+            </div>  
+            <!-- End of diagnosis Top Nav -->
+            
+            <!-- diagnosis body -->
+            <div class="container-fluid bg-light py-3"  >
+            
+               <!-- tables -->
+                <div class="row">
+                  <div class="col">
+                    <h3 class="text-dark text-center my-3"> Diagnosis</h3>
+                    
+                    <!-- tables -->
+                    <div style="overflow-x: auto;">
+                      <table class="table table-striped table-bordered" id="patTable" style="width:100%">
+                        <thead>
+                            <tr>
+                              <th>Type of Checkup</th>
+                              <th>Date of Checkup</th>
+                              <th>Reason for Checkup</th>
+                              <th>Diagnosis</th>
+                              <th>Medicine</th>
+                              <th>Checked By</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>X-ray</td>
+                            <td>06/02/2020</td>
+                            <td>Had ankleaches continously for few days due to an injury playing football</td>
+                            <td>Small Fracture on the ankle, Slight tear on the ankle tendon, Rest for 2 weeks</td>
+                            <td>Antibiotics(5 day course), Antiswell cream, Muscle bandage</td>
+                            <td>Dr. Dawa</td>
+                            
+                            
+                          </tr>
+                          <tr>
+                            <td>Blood</td>
+                            <td>02/03/2020</td>
+                            <td>Getting Itchy hands and feet</td>
+                            <td>Blood test for diabates and pressure.</td>
+                            <td>Pressure medication</td>
+                            <td>Dr. Sonam Dorji</td>
+                            
+                            
+                          </tr>
+                          <tr>
+                            <td>ENT</td>
+                            <td>02/03/2020</td>
+                            <td>Sore Throat</td>
+                            <td>Inflammation in the thorat, infection developed, Gargle salt water before sleep</td>
+                            <td>Antibiotics(5 day course)</td>
+                            <td>Dr. Dophu</td>
+                            
+                            
+                          </tr>
+                          <tr>
+                            <td>CT-Scan</td>
+                            <td>15/03/2020</td>
+                            <td>Side pains and struggle to urination.</td>
+                            <td>Swelling of right kidney, blockage on the urethra. Reffered to Opt</td>
+                            <td>Null</td>
+                            <td>Dr. Lhamo</td>
+                            
+                            
+                          </tr>
+                          <tr>
+                            <td>Full body</td>
+                            <td>16/04/2020</td>
+                            <td>Normal check to check on my physical health</td>
+                            <td>Everything is normal, BP normal, pressure also normal</td>
+                            <td>Null</td>
+                            <td>Dr. Tshering Choden</td>
+                            
+                             
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                              <th>Type of Checkup</th>
+                              <th>Date of Checkup</th>
+                              <th>Reason for Checkup</th>
+                              <th>Diagnosis</th>
+                              <th>Medicine</th>
+                              <th>Checked By</th>
+                            </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <!-- end of tables -->
+                    
+                  </div>
+                </div>
+                <!-- end of tables -->
+
+            </div>
+            <!-- end of diagnosis body -->
+          </div>
+          <!-- end of diagnosis -->
+        </div>
+      </div>
+      <!-- end of panel -->
+
+      <!-- Modal for sign out -->
+        <div class="modal" id="sign-out">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header justify-content-center">
+                    <h4 class="modal-title"> LOGOUT</h4>
+                </div>
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-success"  ><a href="/" class="text-white">Leave</a></button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of modal for sign out -->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/patient.js"></script>
+
+      
+    <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+</body>
+</html>
